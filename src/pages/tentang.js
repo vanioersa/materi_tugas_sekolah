@@ -7,11 +7,22 @@ const TentangKami = () => {
   return (
     <div className="tentang-kami">
       <Container>
-        <Row className="justify-content-center">
-          <Col lg={8}>
-            <h2 className="tentang-title text-center mb-4">
+        <Row className="justify-content-center align-items-center">
+          <Col lg className="text-center">
+            <Image
+              src={schoolImage}
+              alt="SMK Bina Nusantara Semarang"
+              fluid
+              rounded
+              className="school-image"
+            />
+            <h2 className="tentang-title mt-4 mb-4">
               Selamat Datang di SMK Bina Nusantara Semarang
             </h2>
+          </Col>
+        </Row>
+        <Row className="justify-content-center">
+          <Col lg={10}>
             <p className="tentang-description">
               SMK Bina Nusantara Semarang berkomitmen untuk memberikan
               pendidikan berkualitas tinggi yang mempersiapkan siswa untuk
@@ -32,19 +43,6 @@ const TentangKami = () => {
               Bergabunglah dengan kami untuk meraih pendidikan yang berkualitas
               dan meraih kesuksesan dalam karir Anda di masa depan!
             </p>
-          </Col>
-        </Row>
-        <Row className="justify-content-center mt-5">
-          <Col lg={6}>
-            <div className="text-center">
-              <Image
-                src={schoolImage}
-                alt="SMK Bina Nusantara Semarang"
-                fluid
-                rounded
-                className="school-image"
-              />
-            </div>
           </Col>
         </Row>
       </Container>

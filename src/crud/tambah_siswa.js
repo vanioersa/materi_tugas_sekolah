@@ -87,7 +87,7 @@ function Tambah_siswa() {
   };
 
   return (
-    <Card className="mx-auto my-5 p-4" style={{ maxWidth: "900px" }}>
+    <Card className="mx-auto my-5 p-5" style={{ maxWidth: "900px" }}>
       <h2 className="text-center mb-5">Tambah Data Siswa</h2>
       <Form onSubmit={handleSubmit}>
         <div className="form-group">

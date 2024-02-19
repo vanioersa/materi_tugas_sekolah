@@ -1,21 +1,38 @@
+/* Navbar.css */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.pembungkus {
+  margin-top: 100px;
+}
+
 .logo-image {
-    border-radius: 50%;
+  border-radius: 50%;
+}
+
+.brand-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.navbar {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-link {
+  color: #fff;
+}
+
+.nav-link:hover {
+  color: #07bdff;
+}
+
+@media (max-width: 991.98px) {
+  .Container {
+    margin-bottom: 56px;
   }
-  
-  .brand-name {
-    font-size: 1.2rem;
-    font-weight: bold;
-  }
-  
-  .navbar {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Efek bayangan */
-  }
-  
-  .nav-link {
-    color: #fff;
-  }
-  
-  .nav-link:hover {
-    color: #07bdff;
-  }
-  
+}

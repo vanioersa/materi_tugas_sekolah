@@ -8,10 +8,10 @@ const VisiMisi = () => {
     <div className="visi-misi">
       <Container>
         <Row className="justify-content-center align-items-center">
-          <Col lg={6} className="mb-4">
+          <Col lg={2} className="mb-4">
             <img src={image2} alt="Image2" className="img-fluid" />
           </Col>
-          <Col lg={6} className="mb-4">
+          <Col lg={8} className="mb-4">
             <div className="visi-misi-text">
               <h2 className="title">Visi & Misi</h2>
               <div className="content">

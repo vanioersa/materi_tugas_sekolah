@@ -118,7 +118,7 @@ function EditProduct() {
   };
 
   return (
-    <Card className="mx-auto my-5 p-4" style={{ maxWidth: "900px" }}>
+    <Card className="mx-auto my-5 p-5" style={{ maxWidth: "900px" }}>
       <h2 className="text-center mb-5">Edit Data Siswa</h2>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="nama">
