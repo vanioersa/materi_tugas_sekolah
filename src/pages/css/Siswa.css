@@ -1,0 +1,70 @@
+.container {
+  padding: 0;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.btn-add {
+  margin-bottom: 20px;
+}
+
+.dataTables_wrapper {
+  overflow-x: auto;
+}
+
+.action-button {
+  margin-right: 5px;
+}
+
+.alert {
+  margin-top: 20px;
+}
+
+/* CSS tambahan untuk mode mobile */
+@media (max-width: 576px) {
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .action-button {
+    font-size: 1rem;
+    padding: 5px 10px;
+  }
+
+  .alert {
+    padding: 0.75rem 1rem;
+  }
+
+  .dataTables_wrapper {
+    overflow-x: scroll;
+  }
+
+  .dataTables_wrapper table {
+    width: 100%
+  }
+
+  .dataTables_wrapper .dataTables_info,
+  .dataTables_wrapper .dataTables_paginate {
+    font-size: 0.8rem
+  }
+
+  .dataTables_wrapper .dataTables_paginate .paginate_button {
+    padding: 0.3rem 0.6rem
+  }
+
+  .dataTables_wrapper .dataTables_filter input {
+    width: 100%;
+  }
+
+  .no-column {
+    display: none;
+  }
+
+  .dataTables_wrapper .dataTables_paginate .page-item.active .page-link::after {
+    display: none;
+  }
+}
+

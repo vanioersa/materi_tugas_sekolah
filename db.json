@@ -1,0 +1,124 @@
+{
+  "murid": [
+    {
+      "id": "1",
+      "nama": "wahyu",
+      "kelas": "10 TKJ",
+      "email": "email@gmail.com",
+      "gender": "laki-laki"
+    },
+    {
+      "id": "2",
+      "nama": "andi",
+      "kelas": "11 TKJ",
+      "email": "email@gmail.com",
+      "gender": "perempuan"
+    },
+    {
+      "id": "3",
+      "nama": "seconta",
+      "kelas": "12 TKJ",
+      "email": "email@gmail.com",
+      "gender": "laki-laki"
+    },
+    {
+      "id": "4",
+      "nama": "helmi",
+      "kelas": "10 TB",
+      "email": "email@gmail.com",
+      "gender": "laki-laki"
+    },
+    {
+      "id": "5",
+      "nama": "azizi",
+      "kelas": "11 TB",
+      "email": "email@gmail.com",
+      "gender": "laki-laki"
+    },
+    {
+      "id": "6",
+      "nama": "nizar",
+      "kelas": "12 TB",
+      "email": "email@gmail.com",
+      "gender": "perempuan"
+    },
+    {
+      "id": "7",
+      "nama": "candra",
+      "kelas": "10 TBSM",
+      "email": "email@gmail.com",
+      "gender": "perempuan"
+    },
+    {
+      "id": "8",
+      "nama": "vanino",
+      "kelas": "11 TBSM",
+      "email": "email@gmail.com",
+      "gender": "laki-laki"
+    },
+    {
+      "id": "9",
+      "nama": "vanino",
+      "kelas": "12 TBSM",
+      "email": "email@gmail.com",
+      "gender": "laki-laki"
+    },
+    {
+      "id": "10",
+      "nama": "vanino",
+      "kelas": "10 AKL",
+      "email": "email@gmail.com",
+      "gender": "laki-laki"
+    },
+    {
+      "id": "11",
+      "nama": "vanino",
+      "kelas": "11 AKL",
+      "email": "email@gmail.com",
+      "gender": "laki-laki"
+    },
+    {
+      "id": "12",
+      "nama": "vanino",
+      "kelas": "12 AKL",
+      "email": "email@gmail.com",
+      "gender": "laki-laki"
+    },
+    {
+      "id": "a276",
+      "nama": "vanino ersa",
+      "kelas": "10 TKJ",
+      "email": "email@gmail.com",
+      "gender": "laki-laki"
+    },
+    {
+      "id": "6312",
+      "nama": "Andi Saputro",
+      "kelas": "11 TKJ",
+      "email": "email@gmail.com",
+      "gender": "laki-laki"
+    },
+    {
+      "id": "91e3",
+      "nama": "Nizar Restu Aji",
+      "kelas": "12 TKJ",
+      "email": "email@gmail.com",
+      "gender": "laki-laki"
+    },
+    {
+      "id": "22a5",
+      "nama": "Nizar Restu Aji",
+      "kelas": "11 TKJ",
+      "email": "email@gmail.com",
+      "gender": "laki-laki"
+    },
+    {
+      "id": "5c9a",
+      "nama": "wahyu yulianto",
+      "kelas": "10 TKJ",
+      "email": "email@gmail.com",
+      "gender": "laki-laki"
+    }
+  ],
+  "Guru": []
+}

@@ -1,0 +1,21 @@
+.logo-image {
+    border-radius: 50%;
+  }
+  
+  .brand-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Efek bayangan */
+  }
+  
+  .nav-link {
+    color: #fff;
+  }
+  
+  .nav-link:hover {
+    color: #07bdff;
+  }
+  
