@@ -1,6 +1,6 @@
 import React from "react";
-import { Container, Row, Col, Image } from "react-bootstrap";
-import schoolImage from "./foto/logo1.png";
+import { Container, Row, Col } from "react-bootstrap";
+import schoolImage from "./foto/logo4.png";
 import "./css/Tentang.css";
 
 const TentangKami = () => {
@@ -9,13 +9,11 @@ const TentangKami = () => {
       <Container>
         <Row className="justify-content-center align-items-center">
           <Col lg className="text-center">
-            <Image
-              src={schoolImage}
-              alt="SMK Bina Nusantara Semarang"
-              fluid
-              rounded
-              className="school-image"
-            />
+            <div className="image-container">
+              <img src={schoolImage} alt="Image2" className="img-fluid" />
+              <p className="motto">Cerdas, Santun dan Berbudi Luhur.</p>
+            </div>
+            
             <h2 className="tentang-title mt-4 mb-4">
               Selamat Datang di SMK Bina Nusantara Semarang
             </h2>
@@ -24,9 +22,9 @@ const TentangKami = () => {
         <Row className="justify-content-center">
           <Col lg={10}>
             <p className="tentang-description">
-              SMK Bina Nusantara Semarang berkomitmen untuk memberikan
-              pendidikan berkualitas tinggi yang mempersiapkan siswa untuk
-              menghadapi tantangan dunia industri.
+              SMK Bina Nusantara Semarang bertekad memberikan pendidikan
+              berkualitas tinggi yang mempersiapkan siswa untuk menghadapi
+              tantangan dunia industri.
             </p>
             <p className="tentang-description">
               Dengan tenaga pengajar berkualitas, fasilitas belajar yang modern,
@@ -41,7 +39,7 @@ const TentangKami = () => {
             </p>
             <p className="tentang-description">
               Bergabunglah dengan kami untuk meraih pendidikan yang berkualitas
-              dan meraih kesuksesan dalam karir Anda di masa depan!
+              dan meraih kesuksesan dalam karier Anda di masa depan!
             </p>
           </Col>
         </Row>

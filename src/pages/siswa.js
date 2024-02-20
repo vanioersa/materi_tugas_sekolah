@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { MDBDataTable } from "mdbreact";
-import { FaEdit, FaTrash, FaPlus } from "react-icons/fa"; // Menambahkan FaPlus untuk ikon tambah
+import { FaEdit, FaTrash, FaPlus } from "react-icons/fa";
 import { Container, Button, Alert } from "react-bootstrap";
 import Swal from "sweetalert2";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -12,51 +12,50 @@ function Siswa() {
   const [muridData, setMuridData] = useState({ columns: [], rows: [] });
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:3030/murid");
+        const columns = [
+          { label: "No", field: "no" },
+          { label: "Nama", field: "nama" },
+          { label: "Email", field: "email" },
+          { label: "Gender", field: "gender" },
+          { label: "Kelas", field: "kelas" },
+          { label: "Action", field: "action" },
+        ];
+        const rows = response.data.map((murid, index) => ({
+          no: index + 1 + ".",
+          nama: murid.nama,
+          email: murid.email,
+          gender: murid.gender,
+          kelas: murid.kelas,
+          action: (
+            <>
+              <Button
+                variant="primary"
+                href={`edit/${murid.id}`}
+                className="action-button"
+              >
+                <FaEdit />
+              </Button>
+              <Button
+                variant="danger"
+                onClick={() => confirmDelete(murid.id)}
+                className="action-button"
+              >
+                <FaTrash />
+              </Button>
+            </>
+          ),
+        }));
+        setMuridData({ columns, rows });
+      } catch (error) {
+        console.error("Terjadi kesalahan:", error);
+      }
+    };
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get("http://localhost:3030/murid");
-      const murids = response.data;
-      const columns = [
-        { label: "No", field: "no" },
-        { label: "Nama", field: "nama" },
-        { label: "Email", field: "email" },
-        { label: "Gender", field: "gender" },
-        { label: "Kelas", field: "kelas" },
-        { label: "Action", field: "action" },
-      ];
-      const rows = response.data.map((murid, index) => ({
-        no: index + 1 + ".",
-        nama: murid.nama,
-        email: murid.email,
-        gender: murid.gender,
-        kelas: murid.kelas,
-        action: (
-          <>
-            <Button
-              variant="primary"
-              href={`edit/${murid.id}`}
-              className="action-button"
-            >
-              <FaEdit />
-            </Button>
-            <Button
-              variant="danger"
-              onClick={() => confirmDelete(murid.id)}
-              className="action-button"
-            >
-              <FaTrash />
-            </Button>
-          </>
-        ),
-      }));
-      setMuridData({ columns, rows });
-    } catch (error) {
-      console.error("Terjadi kesalahan:", error);
-    }
-  };
+    fetchData();
+  }); 
 
   const confirmDelete = (id) => {
     Swal.fire({
@@ -110,7 +109,7 @@ function Siswa() {
         small
         data={muridData}
         searching={true}
-        searchLabel="Cari"
+        searchLabel="Cari....."
       />
       {muridData.rows.length === 0 && (
         <Alert variant="info" className="text-center mt-3">

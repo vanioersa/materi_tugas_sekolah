@@ -1,9 +1,9 @@
-/* Navbar.css */
 .navbar {
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
+  box-shadow: 0 4px 6px hwb(196 9% 55%);
 }
 
 .pembungkus {
@@ -19,20 +19,54 @@
   font-weight: bold;
 }
 
-.navbar {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
 .nav-link {
   color: #fff;
 }
 
 .nav-link:hover {
+  color: #7cdeff;
+  transition: color 1.5s;
+}
+
+.navbar-nav .profile-item {
+  color: #000;
+}
+
+.navbar-nav .profile-item:hover {
   color: #07bdff;
+  transition: color 1s;
 }
 
 @media (max-width: 991.98px) {
   .Container {
     margin-bottom: 56px;
+  }
+
+  .buruan {
+    margin: 10px 0;
+  }
+
+  .nav-link {
+    box-shadow: 0 4px 6px hwb(196 9% 55%);
+    border: #000;
+    color: #fff;
+    margin: 10px 10px;
+    font-size: medium;
+    padding: 15px 20px;
+    border-radius: 20px;
+    background-color: rgb(5, 98, 33);
+  }
+  
+  .navbar-nav .profile-item {
+    background-color: rgb(5, 98, 33);
+    color: #fff;
+    padding: 10px 20px;
+    margin: 15px 10px;
+    border-radius: 10px;
+    transition: 2s;
+  }
+
+  .dropdown-menu {
+    background-color: #242729;
   }
 }

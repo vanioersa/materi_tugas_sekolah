@@ -10,7 +10,6 @@ import "./css/Dashboard.css";
 function Dashboard() {
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState("");
   const [muridData, setMuridData] = useState({ columns: [], rows: [] });
   const chartRef = useRef(null);
 
@@ -38,7 +37,6 @@ function Dashboard() {
   const fetchData = async () => {
     try {
       const response = await axios.get("http://localhost:3030/murid");
-      const murids = response.data;
       const columns = [
         { label: "No", field: "no" },
         { label: "Nama", field: "nama" },
@@ -141,50 +139,7 @@ function Dashboard() {
         },
       });
     }
-  }, [students, loading]);
-
-  const columns = [
-    {
-      dataField: "id",
-      text: "No",
-      formatter: (rowIndex) => `${rowIndex + 0}.`,
-      headerStyle: { width: "5%" },
-    },
-    {
-      dataField: "nama",
-      text: "Nama",
-      headerStyle: { width: "30%" },
-    },
-    {
-      dataField: "email",
-      text: "Email",
-      headerStyle: { width: "30%" },
-    },
-    {
-      dataField: "gender",
-      text: "Gender",
-      headerStyle: { width: "15%" },
-    },
-    {
-      dataField: "kelas",
-      text: "Kelas",
-      headerStyle: { width: "20%" },
-    },
-  ];
-
-  const rowStyle = (row, rowIndex) => {
-    const style = {};
-    if (rowIndex % 2 === 0) {
-      style.backgroundColor = "#f9f9f9";
-    }
-    return style;
-  };
-
-  const filteredStudents = students.filter((student) =>
-    Object.values(student).some((value) =>
-      value.toString().toLowerCase().includes(searchTerm.toLowerCase())
-    )
-  );
+  });
 
   return (
     <div className="dashboard-container">
@@ -202,7 +157,14 @@ function Dashboard() {
       </div>
       <div className="data-table">
         <h2 className="dashboard-title">Data Murid</h2>
-        <MDBDataTable striped bordered small data={muridData} />
+        <MDBDataTable
+          striped
+          bordered
+          small
+          data={muridData}
+          searching={true}
+          searchLabel="Cari....."
+        />
         {muridData.rows.length === 0 && (
           <Alert variant="info" className="text-center mt-3">
             Tidak ada data siswa

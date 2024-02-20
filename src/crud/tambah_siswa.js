@@ -22,32 +22,20 @@ function Tambah_siswa() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateInputs()) {
-      try {
-        const response = await axios.post(
-          "http://localhost:3030/murid",
-          student
-        );
-        console.log(response.data);
-        Swal.fire({
-          icon: "success",
-          title: "Sukses",
-          text: "Siswa berhasil ditambahkan!",
-          showConfirmButton: false,
-          timer: 2000,
-        }).then(() => {
-          window.history.back();
-        });
-      } catch (error) {
-        console.error("Error adding student:", error);
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text:
-            "Terjadi kesalahan saat menambahkan siswa. Silakan coba lagi nanti!",
-          showConfirmButton: false,
-          timer: 2000,
-        });
-      }
+      Swal.fire({
+        title: "Simpan Data",
+        text: "Apakah Anda yakin ingin menyimpan data siswa?",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Ya",
+        cancelButtonText: "Tidak",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          saveStudentData();
+        }
+      });
     } else {
       Swal.fire({
         icon: "error",
@@ -69,10 +57,37 @@ function Tambah_siswa() {
     );
   };
 
+  const saveStudentData = async () => {
+    try {
+      const response = await axios.post("http://localhost:3030/murid", student);
+      console.log(response.data);
+      Swal.fire({
+        icon: "success",
+        title: "Sukses",
+        text: "Siswa berhasil ditambahkan!",
+        showConfirmButton: false,
+        timer: 2000,
+      }).then(() => {
+        window.history.back();
+      });
+    } catch (error) {
+      console.error("Error adding student:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text:
+          "Terjadi kesalahan saat menambahkan siswa. Silakan coba lagi nanti!",
+        showConfirmButton: false,
+        timer: 2000,
+      });
+    }
+  };
+
   const handleBackButtonClick = () => {
     Swal.fire({
       title: "Konfirmasi",
-      text: "Apakah Anda yakin ingin kembali? Data yang belum disimpan akan hilang.",
+      text:
+        "Apakah Anda yakin ingin kembali? Data yang belum disimpan akan hilang.",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -85,7 +100,7 @@ function Tambah_siswa() {
       }
     });
   };
-
+  
   return (
     <Card className="mx-auto my-5 p-5" style={{ maxWidth: "900px" }}>
       <h2 className="text-center mb-5">Tambah Data Siswa</h2>
@@ -150,7 +165,7 @@ function Tambah_siswa() {
           <Button variant="primary" type="submit">
             Simpan
           </Button>
-          <Button variant="secondary" className="ml-3" onClick={handleBackButtonClick}>
+          <Button variant="secondary" className="mx-2" onClick={handleBackButtonClick}>
             Kembali
           </Button>
         </div>

@@ -12,7 +12,7 @@ function EditProduct() {
     email: "",
     gender: "",
   });
-  const [kelasOptions, setKelasOptions] = useState([]);
+  const [, setKelasOptions] = useState([]);
   const [isModified, setIsModified] = useState(false);
 
   useEffect(() => {
@@ -118,7 +118,7 @@ function EditProduct() {
   };
 
   return (
-    <Card className="mx-auto my-5 p-5" style={{ maxWidth: "900px" }}>
+    <Card className="mx-auto my-4 p-5" style={{ maxWidth: "900px" }}>
       <h2 className="text-center mb-5">Edit Data Siswa</h2>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="nama">
@@ -185,7 +185,7 @@ function EditProduct() {
           <Button variant="primary" type="submit">
             Simpan
           </Button>
-          <Button variant="secondary" className="ml-3" onClick={handleBackButtonClick}>
+          <Button variant="secondary" className="mx-2" onClick={handleBackButtonClick}>
             Kembali
           </Button>
         </div>
