@@ -1,34 +1,24 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import Chart from "chart.js/auto";
-import { MDBDataTable } from "mdbreact";
-import { Alert } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
+import {
+  Alert,
+  Table,
+  Form,
+  Row,
+  Col,
+} from "react-bootstrap";
+import Pagination from "react-js-pagination";
 import "./css/Dashboard.css";
 
 function Dashboard() {
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [muridData, setMuridData] = useState({ columns: [], rows: [] });
+  const [currentPage, setCurrentPage] = useState(1);
+  const [muridPerPage, setMuridPerPage] = useState(5);
+  const [showFirstLast, setShowFirstLast] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
   const chartRef = useRef(null);
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:3030/murid")
-      .then((response) => {
-        const updatedStudents = response.data.map((student, index) => ({
-          ...student,
-          id: index + 1,
-        }));
-        setStudents(updatedStudents);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-        setLoading(false);
-      });
-  }, []);
 
   useEffect(() => {
     fetchData();
@@ -37,23 +27,32 @@ function Dashboard() {
   const fetchData = async () => {
     try {
       const response = await axios.get("http://localhost:3030/murid");
-      const columns = [
-        { label: "No", field: "no" },
-        { label: "Nama", field: "nama" },
-        { label: "Email", field: "email" },
-        { label: "Gender", field: "gender" },
-        { label: "Kelas", field: "kelas" },
-      ];
-      const rows = response.data.map((murid, index) => ({
-        no: index + 1 + ".",
-        nama: murid.nama,
-        email: murid.email,
-        gender: murid.gender,
-        kelas: murid.kelas,
-      }));
-      setMuridData({ columns, rows });
+      setStudents(response.data);
+      setLoading(false);
     } catch (error) {
       console.error("Terjadi kesalahan:", error);
+    }
+  };
+
+  const indexOfLastMurid = currentPage * muridPerPage;
+  const indexOfFirstMurid = indexOfLastMurid - muridPerPage;
+
+  const filteredMurid = students.filter((murid) =>
+    Object.values(murid).some(
+      (value) =>
+        typeof value === "string" &&
+        value.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+  );
+
+  const currentMurid = filteredMurid.slice(indexOfFirstMurid, indexOfLastMurid);
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    if (pageNumber > 4) {
+      setShowFirstLast(false);
+    } else {
+      setShowFirstLast(true);
     }
   };
 
@@ -141,6 +140,11 @@ function Dashboard() {
     }
   });
 
+  const totalData = students.length;
+  const firstMuridIndex = indexOfFirstMurid + 1;
+  const lastMuridIndex =
+    indexOfLastMurid > totalData ? totalData : indexOfLastMurid;
+
   return (
     <div className="dashboard-container">
       <div className="chart-container">
@@ -157,19 +161,81 @@ function Dashboard() {
       </div>
       <div className="data-table">
         <h2 className="dashboard-title">Data Murid</h2>
-        <MDBDataTable
-          striped
-          bordered
-          small
-          data={muridData}
-          searching={true}
-          searchLabel="Cari....."
-        />
-        {muridData.rows.length === 0 && (
+        <Row className="mb-3 justify-content-between">
+        <Col xs="auto">
+          <Form.Control
+            as="select"
+            value={muridPerPage}
+            onChange={(e) => setMuridPerPage(parseInt(e.target.value))}
+          >
+            <option value={5}>5</option>
+            <option value={10}>10</option>
+            <option value={15}>15</option>
+            <option value={20}>20</option>
+            <option value={students.length}>All</option>
+          </Form.Control>
+        </Col>
+        <Col xs="auto" className="d-flex align-items-center">
+          <Form.Control
+            type="text"
+            placeholder="Cari siswa..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </Col>
+      </Row>
+        <Table striped bordered hover responsive="md">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Nama</th>
+              <th>Email</th>
+              <th>Gender</th>
+              <th>Kelas</th>
+            </tr>
+          </thead>
+          <tbody>
+            {currentMurid.map((murid, index) => (
+              <tr key={index}>
+                <td>{indexOfFirstMurid + index + 1 + "."}</td>
+                <td>{murid.nama}</td>
+                <td>{murid.email}</td>
+                <td>{murid.gender}</td>
+                <td>{murid.kelas}</td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+        {students.length === 0 && (
           <Alert variant="info" className="text-center mt-3">
             Tidak ada data siswa
           </Alert>
         )}
+        <Row>
+          <Col>
+            <p className="data-info">
+              Menampilkan {firstMuridIndex} hingga {lastMuridIndex} dari{" "}
+              {totalData} data
+            </p>
+          </Col>
+          <Col className="baru-nih">
+            <div className="pagination-container d-flex justify-content-center">
+              <Pagination
+                activePage={currentPage}
+                itemsCountPerPage={muridPerPage}
+                totalItemsCount={filteredMurid.length}
+                pageRangeDisplayed={5}
+                onChange={paginate}
+                itemClass="page-item"
+                linkClass="page-link"
+                prevPageText="Previous"
+                nextPageText="Next"
+                firstPageText={showFirstLast ? "First" : ""}
+                lastPageText={showFirstLast ? "Last" : ""}
+              />
+            </div>
+          </Col>
+        </Row>
       </div>
     </div>
   );

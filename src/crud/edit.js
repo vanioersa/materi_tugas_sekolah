@@ -75,7 +75,7 @@ function EditProduct() {
               showConfirmButton: false,
               timer: 2000,
             }).then(() => {
-              window.location.href = "/siswa";
+              window.history.back();
             });
           })
           .catch((error) => {
@@ -185,7 +185,11 @@ function EditProduct() {
           <Button variant="primary" type="submit">
             Simpan
           </Button>
-          <Button variant="secondary" className="mx-2" onClick={handleBackButtonClick}>
+          <Button
+            variant="secondary"
+            className="mx-2"
+            onClick={handleBackButtonClick}
+          >
             Kembali
           </Button>
         </div>
