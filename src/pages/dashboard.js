@@ -21,6 +21,7 @@ function Dashboard() {
   const [showFirstLast, setShowFirstLast] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [showChart, setShowChart] = useState(false);
+  const [chartSearchTerm, setChartSearchTerm] = useState("");
   const chartRef = useRef(null);
   const tableRef = useRef(null);
 
@@ -61,6 +62,10 @@ function Dashboard() {
   };
 
   const countByGenderAndClass = () => {
+    const filteredStudents = students.filter((student) =>
+      student.kelas.toLowerCase().includes(chartSearchTerm.toLowerCase())
+    );
+
     const data = {
       "10 TKJ": { laki_laki: 0, perempuan: 0 },
       "10 TB": { laki_laki: 0, perempuan: 0 },
@@ -94,7 +99,7 @@ function Dashboard() {
       return color;
     };
 
-    students.forEach((student) => {
+    filteredStudents.forEach((student) => {
       if (!data[student.kelas]) {
         data[student.kelas] = { laki_laki: 0, perempuan: 0 };
       }
@@ -187,11 +192,27 @@ function Dashboard() {
           <h1 className="dashboard-title">
             Jumlah Murid Laki-laki dan Perempuan di Setiap Kelas
           </h1>
-          <div className="toggle-button-container">
-            <Button onClick={toggleView} className="toggle-button">
-              Tampilkan_Tabel
-            </Button>
-          </div>
+          <Row className="justify-content-between align-items-center">
+            <Col xs="auto">
+              <div className="d-flex align-items-center">
+                <Button
+                  onClick={toggleView}
+                  className="toggle-button"
+                  style={{ marginRight: "10px" }}
+                >
+                  Tabel
+                </Button>
+                {/* <p className="search-info mr-2 mb-0">Cari berdasarkan kelas:</p> */}
+                <Form.Control
+                  type="text"
+                  placeholder="Cari kelas..."
+                  value={chartSearchTerm}
+                  onChange={(e) => setChartSearchTerm(e.target.value)}
+                  className="search-input"
+                />
+              </div>
+            </Col>
+          </Row>
           <div className="chart-wrapper">
             {loading ? (
               <p>Loading...</p>
@@ -212,7 +233,7 @@ function Dashboard() {
               <Col xs="auto">
                 <div className="d-flex align-items-center">
                   <Button onClick={toggleView} style={{ marginRight: "10px" }}>
-                    Tampilkan_Grafik
+                    Grafik
                   </Button>
                   <Form.Control
                     as="select"
@@ -231,7 +252,7 @@ function Dashboard() {
                 <div className="d-flex align-items-center">
                   <Form.Control
                     type="text"
-                    placeholder="Cari siswa..."
+                    placeholder="Cari data siswa..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                   />
