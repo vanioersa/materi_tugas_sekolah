@@ -9,7 +9,7 @@
     },
     {
       "id": "daaa",
-      "nama": "nizar restu aji",
+      "nama": "nizar restu ",
       "kelas": "11 TKJ",
       "email": "nizar@gmail.com",
       "gender": "laki-laki"
@@ -48,6 +48,54 @@
       "kelas": "10 TBSM",
       "email": "coba@gmail.com",
       "gender": "laki-laki"
+    },
+    {
+      "id": "dd88",
+      "nama": "dinda novita",
+      "kelas": "11 TB",
+      "email": "coba@gmail.com",
+      "gender": "perempuan"
+    },
+    {
+      "id": "a860",
+      "nama": "alfy",
+      "kelas": "10 TB",
+      "email": "coba@gmail.com",
+      "gender": "perempuan"
+    },
+    {
+      "id": "8b12",
+      "nama": "melyana hasya",
+      "kelas": "12 TB",
+      "email": "coba@gmail.com",
+      "gender": "perempuan"
+    },
+    {
+      "id": "2d4c",
+      "nama": "irvanda ibra",
+      "kelas": "11 TBSM",
+      "email": "coba@gmail.com",
+      "gender": "laki-laki"
+    }
+  ],
+  "daftar": [
+    {
+      "id": "ef0a",
+      "nama": "vanino",
+      "email": "vanino@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "c24d",
+      "name": "andi",
+      "email": "andi@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "dcb5",
+      "name": "wahyu",
+      "email": "wahyu@gmail.com",
+      "password": "123"
     }
   ]
 }

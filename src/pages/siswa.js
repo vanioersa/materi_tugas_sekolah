@@ -129,51 +129,61 @@ function Siswa() {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
           <div style={{ width: "10px" }} />
-          <Button variant="success" href="/tambah">
-            <FaPlus /> Tambah
+          <Button
+            style={{ display: "flex", alignItems: "center" }}
+            variant="success"
+            href="/tambah"
+          >
+            <FaPlus />
+            Tambah
           </Button>
         </Col>
       </Row>
 
-      <Table striped bordered hover responsive="md">
-        <thead>
-          <tr>
-            <th>No</th>
-            <th>Nama</th>
-            <th>Email</th>
-            <th>Gender</th>
-            <th>Kelas</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {currentMurid.map((murid, index) => (
-            <tr key={index}>
-              <td>{indexOfFirstMurid + index + 1 + "."}</td>
-              <td>{murid.nama}</td>
-              <td>{murid.email}</td>
-              <td>{murid.gender}</td>
-              <td>{murid.kelas}</td>
-              <td>
-                <Button
-                  variant="primary"
-                  href={`edit/${murid.id}`}
-                  className="action-button"
-                >
-                  <FaEdit />
-                </Button>{" "}
-                <Button
-                  variant="danger"
-                  onClick={() => confirmDelete(murid.id)}
-                  className="action-button"
-                >
-                  <FaTrash />
-                </Button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
+      <Container>
+        <div className="table-container">
+          <Table striped bordered hover responsive="md">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Kelas</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {currentMurid.map((murid, index) => (
+                <tr key={index}>
+                  <td>{indexOfFirstMurid + index + 1 + "."}</td>
+                  <td>{murid.nama}</td>
+                  <td>{murid.email}</td>
+                  <td>{murid.gender}</td>
+                  <td>{murid.kelas}</td>
+                  <td>
+                    <Button
+                      variant="primary"
+                      href={`edit/${murid.id}`}
+                      className="action-button"
+                    >
+                      <FaEdit />
+                    </Button>{" "}
+                    <Button
+                      variant="danger"
+                      onClick={() => confirmDelete(murid.id)}
+                      className="action-button"
+                    >
+                      <FaTrash />
+                    </Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </div>
+      </Container>
+
       {muridData.length === 0 && (
         <Alert variant="info" className="text-center mt-3">
           Tidak ada data siswa
@@ -196,10 +206,10 @@ function Siswa() {
               onChange={paginate}
               itemClass="page-item"
               linkClass="page-link"
-              prevPageText="Previous"
-              nextPageText="Next"
-              firstPageText={showFirstLast ? "First" : ""}
-              lastPageText={showFirstLast ? "Last" : ""}
+              prevPageText="Seb"
+              nextPageText="Sel"
+              firstPageText={showFirstLast ? "Pert" : ""}
+              lastPageText={showFirstLast ? "Terk" : ""}
             />
           </div>
         </Col>

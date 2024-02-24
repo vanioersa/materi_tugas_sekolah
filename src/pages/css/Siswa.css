@@ -49,3 +49,10 @@
   .dataTables_paginate {
     margin-bottom: 10px;
   }
+
+  .table-container {
+    max-height: 345px;
+    overflow-y: auto;
+  }
+  
+  
